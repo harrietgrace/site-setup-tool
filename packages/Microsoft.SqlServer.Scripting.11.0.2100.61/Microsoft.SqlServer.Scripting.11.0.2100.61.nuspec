@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.SqlServer.Scripting</id>
+    <version>11.0.2100.61</version>
+    <title />
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Contains the necessary SMO dependencies to allow execution of full client-side SQL scripts (eg. containing the GO command) to be executed from .NET.
+
+Such scripts can be executed from within Management Studio but will fail when executed through ADO.NET.  This package contains the dependencies to allow that to happen.
+
+Example usage:
+
+public static void ExecuteSqlScript(SqlConnection conn, string script)
+{
+   var serverConnection = new Microsoft.SqlServer.Management.Common.ServerConnection(conn);
+   var server = new Microsoft.SqlServer.Management.Smo.Server(serverConnection);
+   server.ConnectionContext.ExecuteNonQuery(script);
+}
+
+PS. Anyone can download Sql Server Express (for free!) and copy these assemblies from the installation folder, but having a simple package just saves so much pain.</description>
+    <summary>SQL Server SMO libraries required to execute scripts.</summary>
+    <references>
+      <reference file="Microsoft.SqlServer.ConnectionInfo.dll" />
+      <reference file="Microsoft.SqlServer.Management.Sdk.Sfc.dll" />
+      <reference file="Microsoft.SqlServer.Smo.dll" />
+    </references>
+  </metadata>
+</package>
